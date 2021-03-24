@@ -74,6 +74,7 @@ typedef enum {
 	outputPortWidthsParam,
 	outputPortTypesParam,
 	outputPortVariableVRsParam,
+    nTunableParam,
 	numParams
 
 } Parameter;
@@ -1292,7 +1293,11 @@ static void mdlInitializeSizes(SimStruct *S) {
 
 	logDebug(S, "mdlInitializeSizes()");
 
-	ssSetNumSFcnParams(S, numParams);
+    const int nTunable = mxGetScalar(ssGetSFcnParam(S, nTunableParam));
+
+	ssSetNumSFcnParams(S, numParams + nTunable);
+
+    ssSetSFcnParamTunable(S, numParams + 1, true);
 
 #if defined(MATLAB_MEX_FILE)
 	if (ssGetNumSFcnParams(S) == ssGetSFcnParamsCount(S)) {
@@ -1656,6 +1661,11 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
 	} else {
 
 		const time_T h = time - instance->time;
+
+        fmi2ValueReference vr_e = 3;
+        fmi2Real e = mxGetScalar(ssGetSFcnParam(S, nTunableParam + 1));
+
+        CHECK_STATUS(FMI2SetReal(instance, &vr_e, 1, &e))
 
 		if (h > 0) {
 			if (isFMI1(S)) {

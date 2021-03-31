@@ -1931,6 +1931,7 @@ public class FMUBlockDialog extends JDialog {
         chckbxLogFMICalls.setText("Log FMI calls");
         panel14.add(chckbxLogFMICalls, new GridConstraints(7, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         resettableCheckBox = new JCheckBox();
+        resettableCheckBox.setOpaque(false);
         resettableCheckBox.setText("Resettable");
         panel14.add(resettableCheckBox, new GridConstraints(9, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }

@@ -845,6 +845,7 @@
                       <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <opaque value="false"/>
                       <text value="Resettable"/>
                     </properties>
                   </component>

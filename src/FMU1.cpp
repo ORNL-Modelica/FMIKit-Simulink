@@ -3,11 +3,9 @@
  *  This file is part of FMIKit. See LICENSE.txt in the project  *
  *  root for license information.                                *
  *****************************************************************/
-
-#include <iostream>
-
 #include "FMU1.h"
 
+#include <iostream>
 #include <sstream>
 #include <iomanip>
 #include <stdarg.h>
@@ -49,19 +47,19 @@ __inline int c99_snprintf(char *outBuf, size_t size, const char *format, ...) {
 using namespace std;
 
 // ValueReferenc array to debug text
-static void appendValueReferences(std::stringstream &ss, const fmikit::ValueReference vr[], size_t nvr) {
-	for (size_t i = 0; i < nvr; i++) {
-		ss << vr[i];
-		if (i < nvr - 1) ss << ", ";
-	}
-}
+//static void appendValueReferences(std::stringstream &ss, const fmikit::ValueReference vr[], size_t nvr) {
+//	for (size_t i = 0; i < nvr; i++) {
+//		ss << vr[i];
+//		if (i < nvr - 1) ss << ", ";
+//	}
+//}
 
-static void appendDoubles(std::stringstream &ss, const double values[], size_t nvalues) {
-	for (size_t i = 0; i < nvalues; i++) {
-		ss << values[i];
-		if (i < nvalues - 1) ss << ", ";
-	}
-}
+//static void appendDoubles(std::stringstream &ss, const double values[], size_t nvalues) {
+//	for (size_t i = 0; i < nvalues; i++) {
+//		ss << values[i];
+//		if (i < nvalues - 1) ss << ", ";
+//	}
+//}
 
 
 namespace fmikit {

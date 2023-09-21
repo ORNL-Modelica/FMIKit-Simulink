@@ -66,7 +66,9 @@ namespace fmikit {
 		void setupExperiment(bool toleranceDefined, double tolerance, double startTime, bool stopTimeDefined, double stopTime);
 		void enterInitializationMode();
 		void exitInitializationMode();
-
+		void terminate();
+		void freeInstance();
+		
 		double getReal(ValueReference vr) override;
 		int getInteger(ValueReference vr) override;
 		bool getBoolean(ValueReference vr) override;
@@ -144,8 +146,7 @@ namespace fmikit {
 
 		/* Wrapper functions for SEH */
 		void instantiate_(fmi2String instanceName, fmi2Type fmuType, fmi2String fmuGUID, fmi2String fmuResourceLocation, const fmi2CallbackFunctions* functions, fmi2Boolean visible, fmi2Boolean loggingOn);
-		void terminate();
-		void freeInstance();
+
 	};
 
 

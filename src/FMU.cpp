@@ -137,6 +137,14 @@ FMU::FMU(const std::string &guid, const std::string &modelIdentifier, const std:
 	wstring libPath(libraryPath.begin(), libraryPath.end());
 	m_libraryHandle = LoadLibraryEx(libPath.c_str(), NULL, LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
 
+	// Adding loop to avoid issue where dll is not found after the first attempt to load
+	int counter = 0;
+	while (!m_libraryHandle && counter < 5) {
+		m_libraryHandle = LoadLibraryEx(libPath.c_str(), NULL, LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
+		Sleep(100);
+		counter++;
+	}
+
 	// remove the binaries directory from the DLL path
 	RemoveDllDirectory(dllDirectoryCookie);
 # else
